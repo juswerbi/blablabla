@@ -26,7 +26,7 @@
             </button>
             <ul class="nav-list" id="nav-list">
                 <li><a href="#training">TRENINGI</a></li>
-                <li><a href="#contact">KONTAKT4</a></li>
+                <li><a href="#contact">KONTAKT</a></li>
                 <li><a href="#" class="cta-button">ZAPISZ SIĘ</a></li>
             </ul>
         </nav>
@@ -70,9 +70,18 @@
             </div> <div class="training-schedule">
                 <h3>⏰ Kiedy Trenujemy</h3>
                 
-                <div class="schedule-cards-wrapper">
+                <div class="tabs-header-wrapper">
+                    <button class="tab-button active" data-tab-target="#lwiatek-content">
+                        Akademia zRęcznego Lwiątka (Kl. I-III)
+                    </button>
+                    <button class="tab-button" data-tab-target="#lew-content">
+                        Akademia zRęcznego Lwa (Kl. IV-VI)
+                    </button>
+                </div>
+                
+                <div class="tabs-content-wrapper">
                     
-                    <div class="schedule-card lwiatek">
+                    <div id="lwiatek-content" class="schedule-card tab-content active">
                         <h4>Akademia <span class="accent">zRęcznego Lwiątka</span></h4>
                         <p class="subtitle">(zajęcia ogólnosportowe z elementami piłki ręcznej)</p>
                         
@@ -93,7 +102,7 @@
                         <p class="schedule-note">*Dodatkowe informacje do ustalenia.</p>
                     </div>
 
-                    <div class="schedule-card lew">
+                    <div id="lew-content" class="schedule-card tab-content">
                         <h4>Akademia <span class="accent">zRęcznego Lwa</span></h4>
                         <p class="subtitle">(treningi piłki ręcznej dla chłopców i dziewcząt)</p>
                         
@@ -136,6 +145,7 @@
     </footer>
 
     <script>
+        // Logika Menu Mobilnego
         const menuToggle = document.querySelector('.menu-toggle');
         const navList = document.querySelector('.nav-list');
 
@@ -152,6 +162,26 @@
                     menuToggle.setAttribute('aria-expanded', 'false');
                     navList.classList.remove('open');
                 }
+            });
+        });
+
+        // Logika Zakładek Harmonogramu
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.dataset.tabTarget;
+                
+                // 1. Ukryj wszystkie treści i usuń aktywne style z przycisków
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // 2. Aktywuj kliknięty przycisk
+                button.classList.add('active');
+
+                // 3. Pokaż docelową treść
+                document.querySelector(targetId).classList.add('active');
             });
         });
     </script>
