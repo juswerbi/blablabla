@@ -14,25 +14,25 @@
 </head>
 <body>
     
+    <header class="nav-bar">
+        <a href="#hero" class="logo-container" aria-label="Strona główna UKS LEW OJRZANÓW">
+            <img src="Img/uks_lew_ojrzanow_logo.png" alt="Logo UKS Lew Ojrzanów">
+            UKS LEW OJRZANÓW
+        </a>
+
+        <nav class="main-nav" aria-label="Główna nawigacja strony">
+            <button class="menu-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Otwórz menu">
+                <span class="hamburger-icon">☰</span>
+            </button>
+            <ul class="nav-list" id="nav-list">
+                <li><a href="#training">TRENINGI</a></li>
+                <li><a href="#contact">KONTAKT</a></li>
+                <li><a href="#" class="cta-button">ZAPISZ SIĘ</a></li>
+            </ul>
+        </nav>
+    </header> 
+
     <div class="page-wrapper"> 
-
-        <header class="nav-bar">
-            <a href="#hero" class="logo-container" aria-label="Strona główna UKS LEW OJRZANÓW">
-                <img src="Img/uks_lew_ojrzanow_logo.png" alt="Logo UKS Lew Ojrzanów">
-                UKS LEW OJRZANÓW
-            </a>
-
-            <nav class="main-nav" aria-label="Główna nawigacja strony">
-                <button class="menu-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Otwórz menu">
-                    <span class="hamburger-icon">☰</span>
-                </button>
-                <ul class="nav-list" id="nav-list">
-                    <li><a href="#training">TRENINGI</a></li>
-                    <li><a href="#contact">KONTAKT_8</a></li>
-                    <li><a href="#" class="cta-button">ZAPISZ SIĘ</a></li>
-                </ul>
-            </nav>
-        </header>
 
         <main>
             <header id="hero" class="hero-header">
@@ -104,11 +104,11 @@
                                 <div>
                                     <p><strong>Poniedziałek:</strong> 15:30 - 16:30</p>
                                     <p><strong>Środa*:</strong> 15:30 - 17:00</p>
-                                </div>
+                                }
                                 <div>
                                     <p><strong>Czwartek*:</strong> 14:30 - 16:00</p>
                                     <p><strong>Piątek:</strong> 15:30 - 16:30</p>
-                                </div>
+                                }
                             </div>
 
                             <p class="schedule-note">*Dodatkowe informacje do ustalenia.</p>
@@ -210,11 +210,14 @@
         navList.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
-                    toggleMenu(); // Używamy tej samej funkcji do zamykania
+                    // Sprawdzamy, czy link nie jest przyciskiem CTA (żeby nie zamknąć od razu)
+                    if (!link.classList.contains('cta-button')) {
+                        toggleMenu(); 
+                    }
                 }
             });
         });
-
+        
         // Logika Zakładek Harmonogramu (niezmieniona)
         const tabButtons = document.querySelectorAll('.tab-button');
         const tabContents = document.querySelectorAll('.tab-content');
