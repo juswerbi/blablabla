@@ -435,14 +435,18 @@ main { padding-top: 0; }
 .chip-label {
     display: inline-block;
     padding: 10px 15px;
-    border: 1px solid #ccc;
+    /* NOWA ZMIANA: Wyraźny czarny obrys (default) */
+    border: 2px solid var(--color-black); 
     border-radius: 20px;
     cursor: pointer;
-    background-color: var(--color-bg-light); /* Jasne tło jako nieaktywne */
+    background-color: var(--color-white); /* Białe tło */
     color: var(--color-black);
-    font-weight: 600;
+    font-weight: 700; /* Zwiększona waga dla czytelności */
     transition: all 0.2s ease;
     text-align: center;
+    /* Ustawienia dla ikony (która pojawi się tylko w stanie checked) */
+    position: relative; 
+    padding-left: 15px; /* Dodatkowy padding na ikonę */
 }
 
 /* Ukrycie domyślnego pola checkbox */
@@ -450,19 +454,38 @@ main { padding-top: 0; }
     display: none;
 }
 
-/* Stan :hover (lekkie podświetlenie) */
+/* Stan :hover */
 .chip-group input[type="checkbox"] + .chip-label:hover {
-    background-color: #e0e0e0;
-    border-color: var(--color-gold);
+    background-color: var(--color-bg-light); 
+    border-color: var(--color-black);
 }
 
 /* Stan :checked (aktywny chip) */
 .chip-group input[type="checkbox"]:checked + .chip-label {
-    background-color: var(--color-red-accent); /* Czerwone tło dla zaznaczenia */
+    /* NOWA ZMIANA: Czarne tło, biały tekst */
+    background-color: var(--color-black); 
     color: var(--color-white);
-    border-color: var(--color-red-accent);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transform: scale(1.02);
+    border-color: var(--color-black);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* NOWA ZMIANA: Dodanie ikony "check" (korzystamy z unicode) */
+.chip-group input[type="checkbox"]:checked + .chip-label::before {
+    content: '✓'; /* Symbol znacznika */
+    color: var(--color-gold); /* Złoty kolor dla akcentu */
+    font-size: 1.1em;
+    font-weight: 900;
+    margin-right: 8px;
+    /* Pozycja, aby znajdowała się przed tekstem */
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Korygujemy padding, aby uwzględnić ikonę w stanie checked */
+.chip-group input[type="checkbox"]:checked + .chip-label {
+    padding-left: 35px; /* Zwiększamy, aby pomieścić ikonę + margines */
 }
 
 /* ---------------------------------------------------- */
