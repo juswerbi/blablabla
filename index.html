@@ -26,7 +26,7 @@
             </button>
             <ul class="nav-list" id="nav-list">
                 <li><a href="#training">TRENINGI</a></li>
-                <li><a href="#contact">KONTAKT</a></li>
+                <li><a href="#contact">KONTAKT_6</a></li>
                 <li><a href="#" class="cta-button">ZAPISZ SIĘ</a></li>
             </ul>
         </nav>
@@ -142,13 +142,20 @@
             <div class="contact-form-wrapper">
                 <form action="#" method="POST">
                     
-                    <label for="group">Wybierz grupę treningową dziecka:</label>
-                    <select id="group" name="group" required>
-                        <option value="" disabled selected>-- Wybierz grupę --</option>
-                        <option value="lwiatek">Akademia zRęcznego Lwiątka (Kl. I-III)</option>
-                        <option value="lew_iv_v">Akademia zRęcznego Lwa (Kl. IV-V)</option>
-                        <option value="lew_vi">Akademia zRęcznego Lwa (Kl. VI)</option>
-                    </select>
+                    <label for="group-selection">Wybierz grupy treningowe, do których chcesz zapisać dziecko/dzieci:</label>
+                    
+                    <div class="chip-group" id="group-selection">
+                        
+                        <input type="checkbox" id="lwiatek" name="group[]" value="lwiatek">
+                        <label for="lwiatek" class="chip-label">Akademia zRęcznego Lwiątka (Kl. I-III)</label>
+
+                        <input type="checkbox" id="lew_iv_v" name="group[]" value="lew_iv_v">
+                        <label for="lew_iv_v" class="chip-label">Akademia zRęcznego Lwa (Kl. IV-V)</label>
+
+                        <input type="checkbox" id="lew_vi" name="group[]" value="lew_vi">
+                        <label for="lew_vi" class="chip-label">Akademia zRęcznego Lwa (Kl. VI)</label>
+                        
+                    </div>
 
                     <label for="email">Twój adres e-mail (do kontaktu):</label>
                     <input type="email" id="email" name="email" required placeholder="np. jan.kowalski@poczta.pl">
