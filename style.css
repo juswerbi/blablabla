@@ -2,24 +2,17 @@
 /* I. Zmienne Kolorów i Ustawienia Podstawowe (WCAG)    */
 /* ---------------------------------------------------- */
 :root {
-    /* Brandowe kolory */
-    --color-black: #1A1A1A;     /* Tło nawigacji i stopki */
-    --color-gold: #FFD700;      /* Akcent - mocno widoczny */
-    --color-yellow: #FFFF00;    /* Akcent - CTA */
+    --color-black: #1A1A1A;
+    --color-gold: #FFD700;
+    --color-yellow: #FFFF00;
     --color-white: #ffffff;
-    --color-text: #F0F0F0;      /* Biały/Jasny tekst na ciemnym tle */
-    --color-bg-light: #f5f5f5;  /* Lekko szare tło sekcji */
-
-    /* Ustawienia Fontu */
+    --color-text: #F0F0F0;
+    --color-bg-light: #f5f5f5;
     --font-main: 'Open Sans', sans-serif;
 }
 
 /* Podstawowy Reset i Body */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: var(--font-main);
@@ -57,7 +50,7 @@ body {
 }
 
 .logo-container img {
-    height: 65px; /* POWIĘKSZONE LOGO */
+    height: 65px; 
     width: auto;
     margin-right: 15px;
     object-fit: contain;
@@ -94,12 +87,11 @@ body {
 }
 
 /* ---------------------------------------------------- */
-/* CTA Button (Zapisz się) - Ujednolicenie            */
+/* CTA Button (Zapisz się)                             */
 /* ---------------------------------------------------- */
 .cta-button {
     display: inline-block;
     background-color: var(--color-yellow);
-    /* WCAG FIX: Wymuszony czarny kolor tekstu dla kontrastu */
     color: var(--color-black) !important; 
     padding: 0.7rem 1.5rem;
     text-decoration: none;
@@ -111,7 +103,6 @@ body {
     border: none;
 }
 
-/* Animacja/Interakcja CTA */
 .cta-button:hover,
 .cta-button:focus {
     background-color: var(--color-gold);
@@ -120,7 +111,6 @@ body {
     outline: none;
 }
 
-/* Specjalny styl dla CTA w Hero (jeszcze większy) */
 .cta-hero {
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
@@ -131,11 +121,8 @@ body {
 /* III. Główny Kontener i Sekcje                        */
 /* ---------------------------------------------------- */
 
-main {
-    padding-top: 0;
-}
+main { padding-top: 0; }
 
-/* Header (Sekcja Hero) */
 .hero-header {
     background-color: var(--color-black);
     color: var(--color-text);
@@ -147,24 +134,9 @@ main {
     min-height: 80vh;
 }
 
-.hero-copy {
-    max-width: 500px;
-}
+.hero-copy h1 { color: var(--color-white); font-size: 3rem; margin-bottom: 1rem; line-height: 1.1; }
+.hero-copy p { font-size: 1.25rem; margin-bottom: 2rem; color: var(--color-gold); }
 
-.hero-copy h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    line-height: 1.1;
-    color: var(--color-white);
-}
-
-.hero-copy p {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    color: var(--color-gold);
-}
-
-/* Placeholder Grafiki */
 .hero-image-placeholder {
     flex-grow: 1;
     background-color: var(--color-gold);
@@ -185,13 +157,8 @@ main {
     text-align: center;
 }
 
-.content-section:nth-of-type(odd) {
-    background-color: var(--color-bg-light);
-}
-
-.content-section:nth-of-type(even) {
-    background-color: var(--color-white);
-}
+.content-section:nth-of-type(odd) { background-color: var(--color-bg-light); }
+.content-section:nth-of-type(even) { background-color: var(--color-white); }
 
 .content-section h2 {
     font-size: 2.5rem;
@@ -203,14 +170,70 @@ main {
 }
 
 /* ---------------------------------------------------- */
-/* STYLIZACJA MAPY GOOGLE (KONTAKT) - NOWY FRAGMENT     */
+/* STYLIZACJA SEKCJI TRENINGI (Nowy Układ GRID)         */
 /* ---------------------------------------------------- */
 
+.training-location-grid {
+    display: grid;
+    /* Dwie równe kolumny: Mapa po prawej, tekst po lewej */
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px;
+    align-items: start;
+    text-align: left;
+    max-width: 1200px;
+    margin: 3rem auto 5rem;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--color-white); /* Białe tło dla podsekcji, jeśli główna sekcja jest szara */
+}
+
+.location-copy h3 {
+    color: var(--color-gold);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.location-copy p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+/* Podsekcja Harmonogramu */
+.training-schedule h3 {
+    color: var(--color-black);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.training-schedule h4 {
+    color: var(--color-gold);
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.training-schedule ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.training-schedule ul li {
+    background-color: var(--color-bg-light);
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    border-left: 5px solid var(--color-yellow);
+    text-align: left;
+    font-weight: 600;
+}
+
+
+/* STYLIZACJA MAPY GOOGLE (Przeniesiona do TRENINGI) */
 .contact-map-container {
-    margin: 2rem auto;
-    max-width: 900px; /* Maksymalna szerokość mapy */
+    margin: 0; /* Zerujemy marginesy, bo teraz jest wewnątrz Grid-a */
     width: 100%;
-    /* Dodajemy złoty akcent na obramowaniu mapy */
     border: 4px solid var(--color-gold); 
     border-radius: 8px;
     overflow: hidden; 
@@ -220,16 +243,9 @@ main {
 .contact-map-container iframe {
     display: block; 
     width: 100%;
-    /* Stała wysokość mapy */
     height: 450px; 
 }
 
-.contact-info {
-    margin-top: 1.5rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--color-black); 
-}
 
 /* ---------------------------------------------------- */
 /* IV. Stopka (Footer)                                  */
@@ -256,106 +272,60 @@ main {
 /* V. Responsywność (Mobile First)                      */
 /* ---------------------------------------------------- */
 
-.menu-toggle {
-    display: none;
-}
+.menu-toggle { display: none; }
 
 @media (max-width: 1024px) {
-    .hero-header {
-        padding: 4rem 5%;
-    }
-    .hero-copy h1 {
-        font-size: 2.5rem;
+    .hero-header { padding: 4rem 5%; }
+    .hero-copy h1 { font-size: 2.5rem; }
+    
+    /* Na tabletach mapa i tekst wciąż obok siebie, ale ciaśniej */
+    .training-location-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
     }
 }
 
 @media (max-width: 768px) {
-    .nav-bar {
-        padding: 0.5rem 5%;
-    }
-
-    .logo-container img {
-        height: 50px; 
-    }
-
-    .logo-container {
-        font-size: 1rem;
-    }
-
-    .hero-header {
-        flex-direction: column;
-        text-align: center;
-        min-height: unset;
-        padding: 4rem 5% 2rem;
-    }
-
-    .hero-image-placeholder {
-        order: -1;
-        width: 100%;
-        margin-bottom: 2rem;
-        min-height: 200px;
-    }
-
-    /* Menu Mobilne */
-    .main-nav {
-        justify-content: flex-end;
-    }
-
-    .nav-list {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%; 
-        left: 0;
-        width: 100%;
-        background-color: var(--color-black);
-        padding: 1rem 0;
-        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-        gap: 0;
-    }
-
-    .nav-list.open {
-        display: flex;
-    }
-
-    .nav-list li {
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-list li a {
-        display: block;
-        padding: 15px 0; 
-        width: 100%;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
-    }
-
-    .cta-button {
-        display: block;
-        width: 80%;
-        margin: 20px auto;
-        text-align: center;
-    }
-
-    .menu-toggle {
-        display: block;
-        background: none;
-        border: none;
-        color: var(--color-gold);
-        font-size: 2rem;
-        cursor: pointer;
-        padding: 5px;
-    }
-
-    /* Dostosowanie dla mapy na małych ekranach */
-    .contact-map-container {
-        border: none;
-        border-radius: 0;
-        margin-left: -5%; /* Wypełnienie krawędzi strony */
+    /* Menu & Hero */
+    .nav-bar { padding: 0.5rem 5%; }
+    .logo-container img { height: 50px; }
+    .logo-container { font-size: 1rem; }
+    .hero-header { flex-direction: column; text-align: center; min-height: unset; padding: 4rem 5% 2rem; }
+    .hero-image-placeholder { order: -1; width: 100%; margin-bottom: 2rem; min-height: 200px; }
+    .menu-toggle { display: block; }
+    .nav-list { /* Stylizacja mobilnego menu */ }
+    .nav-list.open { display: flex; }
+    
+    /* TRENINGI - ZMIANA NA UKŁAD KOLUMNOWY */
+    .training-location-grid {
+        /* Mapa i tekst jeden pod drugim */
+        grid-template-columns: 1fr; 
+        gap: 30px;
+        padding: 0;
+        margin-left: -5%;
         margin-right: -5%;
         width: auto;
     }
+
+    .contact-map-container {
+        border: none;
+        border-radius: 0;
+        /* Wypełnienie krawędzi strony na mobile */
+        margin-left: -5%; 
+        margin-right: -5%;
+        width: 110%; /* Wychodzi poza standardowy kontener, żeby wypełnić całość */
+    }
+
     .contact-map-container iframe {
-        height: 300px; /* Niższa mapa na mobile */
+        height: 300px; 
+    }
+
+    .location-copy {
+        padding: 0 5%;
+    }
+
+    .training-schedule ul {
+        max-width: 100%;
+        padding: 0 5%;
     }
 }
