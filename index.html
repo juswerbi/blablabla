@@ -26,7 +26,7 @@
             </button>
             <ul class="nav-list" id="nav-list">
                 <li><a href="#training">TRENINGI</a></li>
-                <li><a href="#contact">KONTAKT5</a></li>
+                <li><a href="#contact">KONTAKT</a></li>
                 <li><a href="#" class="cta-button">ZAPISZ SIĘ</a></li>
             </ul>
         </nav>
@@ -72,10 +72,12 @@
                 
                 <div class="tabs-header-wrapper">
                     <button class="tab-button active" data-tab-target="#lwiatek-content">
-                        Akademia zRęcznego Lwiątka (Kl. I-III)
+                        Akademia zRęcznego Lwiątka 
+                        <span class="class-info">(Kl. I-III)</span>
                     </button>
                     <button class="tab-button" data-tab-target="#lew-content">
-                        Akademia zRęcznego Lwa (Kl. IV-VI)
+                        Akademia zRęcznego Lwa 
+                        <span class="class-info">(Kl. IV-VI)</span>
                     </button>
                 </div>
                 
@@ -135,8 +137,29 @@
 
         <section id="contact" class="content-section" aria-labelledby="contact-title">
             <h2 id="contact-title">📞 KONTAKT</h2>
-            <p>Masz pytania dotyczące zapisów, składek lub treningów? Skontaktuj się z nami bezpośrednio. Jesteśmy do Twojej dyspozycji, aby pomóc Ci dołączyć do Lwów!</p>
-            </section>
+            <p>Masz pytania dotyczące zapisów, składek lub treningów? Wypełnij formularz poniżej, a skontaktujemy się z Tobą najszybciej, jak to możliwe.</p>
+
+            <div class="contact-form-wrapper">
+                <form action="#" method="POST">
+                    
+                    <label for="group">Wybierz grupę treningową dziecka:</label>
+                    <select id="group" name="group" required>
+                        <option value="" disabled selected>-- Wybierz grupę --</option>
+                        <option value="lwiatek">Akademia zRęcznego Lwiątka (Kl. I-III)</option>
+                        <option value="lew_iv_v">Akademia zRęcznego Lwa (Kl. IV-V)</option>
+                        <option value="lew_vi">Akademia zRęcznego Lwa (Kl. VI)</option>
+                    </select>
+
+                    <label for="email">Twój adres e-mail (do kontaktu):</label>
+                    <input type="email" id="email" name="email" required placeholder="np. jan.kowalski@poczta.pl">
+
+                    <label for="phone">Numer telefonu:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="np. 123 456 789">
+
+                    <button type="submit" class="cta-button">WYŚLIJ ZAPYTANIE O ZAPIS</button>
+                </form>
+            </div>
+        </section>
     </main>
 
     <footer class="main-footer">
