@@ -174,7 +174,6 @@ main { padding-top: 0; }
     padding-bottom: 5px;
 }
 
-/* KOREKTA WCAG: Nagłówki H3 na kolor czarny */
 .content-section h3 {
     color: var(--color-black); 
     font-size: 2rem;
@@ -194,8 +193,8 @@ main { padding-top: 0; }
     max-width: 1200px;
     margin: 3rem auto 5rem;
     padding: 20px;
-    border-radius: 10px;
-    background-color: var(--color-white);
+    /* USUNIĘTO BIAŁE TŁO I BORDER RADIUS Z KONTENERA */
+    background-color: transparent; 
 }
 
 .location-copy h3 {
@@ -235,14 +234,14 @@ main { padding-top: 0; }
     display: flex;
     justify-content: center;
     margin: 0 auto; 
-    gap: 10px; /* Mały odstęp między tabami */
+    gap: 10px; 
     max-width: 900px;
 }
 
 .tab-button {
     background-color: var(--color-bg-light);
     color: var(--color-black);
-    padding: 10px 15px;
+    padding: 10px 15px; /* Padding jak na desktopie */
     border: 2px solid var(--color-bg-light);
     border-radius: 8px 8px 0 0;
     cursor: pointer; 
@@ -252,16 +251,15 @@ main { padding-top: 0; }
     max-width: 450px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
     
-    /* Układ wewnątrz przycisku: Obrazek obok tekstu */
+    /* Układ: Obrazek obok tekstu, wyrównane do lewej */
     display: flex; 
     flex-direction: row; 
     align-items: center;
-    justify-content: center;
-    text-align: left;
+    justify-content: flex-start; /* Do lewej */
+    text-align: left; /* Tekst do lewej */
     gap: 15px;
 }
 
-/* Obrazki w tabach */
 .tab-icon {
     height: 56px;
     width: auto;
@@ -269,7 +267,6 @@ main { padding-top: 0; }
     flex-shrink: 0; 
 }
 
-/* Tekst w tabach */
 .tab-text {
     font-size: 1.1rem;
     font-weight: 700;
@@ -294,7 +291,6 @@ main { padding-top: 0; }
     background-color: var(--color-white);
     border-color: var(--color-gold);
     border-bottom: 0;
-    /* Aktywny tekst staje się czerwony */
     color: var(--color-red-accent); 
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
     z-index: 10;
@@ -304,7 +300,6 @@ main { padding-top: 0; }
     color: var(--color-red-accent);
 }
 
-/* Kontener treści */
 .tabs-content-wrapper {
     position: relative;
     max-width: 900px;
@@ -320,8 +315,8 @@ main { padding-top: 0; }
     border-top: 0; 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     animation: fadeIn 0.5s;
-    text-align: center;
-    margin-top: -2px; /* Korekta */
+    text-align: left; /* Cała zawartość do lewej */
+    margin-top: -2px; 
 }
 
 .tab-content.active {
@@ -334,63 +329,45 @@ main { padding-top: 0; }
 }
 
 /* ---------------------------------------------------- */
-/* Stylizacja Wnętrza Harmonogramu (CLEAN LOOK)         */
+/* Stylizacja Wnętrza Harmonogramu (Nowy Układ)         */
 /* ---------------------------------------------------- */
 
-/* Subtitle */
+/* Subtitle - Styl body text (bez bolda) */
 .schedule-card .subtitle {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 400; /* Normal */
     color: var(--color-black);
     margin-bottom: 2rem;
+    text-align: left;
 }
 
-/* Grupa Klas (czysty styl) */
-.class-group {
-    background-color: transparent; 
-    border: none;
-    padding: 10px 0;
-    margin-bottom: 10px;
+/* Siatka 2-kolumnowa dla harmonogramu */
+.schedule-grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 100%;
 }
 
-/* Nazwa klasy (H5) - bez żółtego podkreślenia */
-.class-group h5 {
+.class-column h5 {
     font-size: 1.4rem;
     color: var(--color-black);
     font-weight: 800;
     text-transform: uppercase;
     margin-bottom: 15px;
-    border-bottom: none; 
+    border: none;
     padding-bottom: 0;
 }
 
-/* Dni i godziny treningów */
-.schedule-days {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.schedule-days p {
+.schedule-grid-2-col p {
     font-size: 1.1rem;
-    margin: 0;
-    padding: 0;
+    margin: 5px 0;
 }
 
-.schedule-days strong {
+.schedule-grid-2-col strong {
     color: var(--color-black); 
     font-weight: 700;
     margin-right: 5px;
-}
-
-/* Separator dla Klas IV-V i VI */
-.schedule-separator {
-    height: 1px;
-    background-color: var(--color-black); /* Czarna linia */
-    width: 60%; /* Szerokość linii */
-    margin: 30px auto; /* Odstępy góra/dół */
-    opacity: 0.3; 
 }
 
 .schedule-note {
@@ -443,7 +420,7 @@ main { padding-top: 0; }
     font-size: 1.2rem;
 }
 
-/* STYLIZACJA CHIPSÓW (Checkboxów) */
+/* STYLIZACJA CHIPSÓW */
 .chip-group {
     display: flex;
     flex-wrap: wrap;
@@ -455,11 +432,10 @@ main { padding-top: 0; }
 .chip-label {
     display: inline-block;
     padding: 10px 15px;
-    /* NOWA ZMIANA: Wyraźny czarny obrys (default) */
     border: 2px solid var(--color-black); 
     border-radius: 20px;
     cursor: pointer;
-    background-color: var(--color-white); /* Białe tło */
+    background-color: var(--color-white); 
     color: var(--color-black);
     font-weight: 700;
     transition: all 0.2s ease;
@@ -468,27 +444,22 @@ main { padding-top: 0; }
     padding-left: 15px; 
 }
 
-/* Ukrycie domyślnego pola checkbox */
 .chip-group input[type="checkbox"] {
     display: none;
 }
 
-/* Stan :hover */
 .chip-group input[type="checkbox"] + .chip-label:hover {
     background-color: var(--color-bg-light); 
     border-color: var(--color-black);
 }
 
-/* Stan :checked (aktywny chip) */
 .chip-group input[type="checkbox"]:checked + .chip-label {
-    /* NOWA ZMIANA: Czarne tło, biały tekst */
     background-color: var(--color-black); 
     color: var(--color-white);
     border-color: var(--color-black);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* NOWA ZMIANA: Dodanie ikony "check" */
 .chip-group input[type="checkbox"]:checked + .chip-label::before {
     content: '✓'; 
     color: var(--color-gold); 
@@ -555,7 +526,7 @@ main { padding-top: 0; }
         display: none; 
         flex-direction: column;
         position: absolute;
-        top: 60px; /* Wysokość nav-bar */
+        top: 60px; 
         right: 0;
         background-color: var(--color-black);
         width: 100%;
@@ -604,28 +575,33 @@ main { padding-top: 0; }
         height: 300px; 
     }
 
-    /* HARMONOGRAM NA MOBILE (Taby obok siebie) */
+    /* HARMONOGRAM NA MOBILE */
+    
+    /* Wymuszamy, by taby były w jednej linii obok siebie */
     .tabs-header-wrapper {
-        flex-direction: row; /* Taby w jednej linii */
+        flex-direction: row; 
         gap: 5px;
         padding: 0 5px;
     }
     
     .tab-button {
-        flex-direction: column; /* Ikona nad tekstem na mobile */
+        flex-direction: column; /* Obrazek nad tekstem */
         padding: 10px 5px;
         text-align: center;
         border-radius: 8px 8px 0 0;
+        align-items: center; /* Wyśrodkowanie elementów wewnątrz */
+        justify-content: center;
     }
 
     .tab-icon {
-        height: 40px; /* Mniejsza ikona */
+        height: 40px; 
         margin-bottom: 5px;
     }
 
     .tab-text {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         align-items: center;
+        text-align: center;
     }
     
     .tabs-content-wrapper {
@@ -637,13 +613,10 @@ main { padding-top: 0; }
         border-radius: 8px;
     }
 
-    .schedule-days {
-        flex-direction: column;
-        gap: 5px;
-    }
-    
-    .schedule-days p {
-        min-width: 100%;
+    /* Harmonogram na mobile w jednej kolumnie */
+    .schedule-grid-2-col {
+        grid-template-columns: 1fr; /* Jedna kolumna */
+        gap: 20px;
     }
     
     /* Chipsy na Mobile */
