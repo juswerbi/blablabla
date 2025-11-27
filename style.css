@@ -28,7 +28,7 @@ body {
 }
 
 /* ---------------------------------------------------- */
-/* II. Nawigacja (Sticky Header) - ZMIANA: Z-INDEX       */
+/* II. Nawigacja (Sticky Header)                        */
 /* ---------------------------------------------------- */
 
 .nav-bar {
@@ -39,7 +39,7 @@ body {
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 1010; /* ✅ Zwiększony Z-index, aby był nad zaszarzeniem tła */
+    z-index: 1010; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     min-height: 80px; 
 }
@@ -319,7 +319,7 @@ main { padding-top: 0; }
 }
 
 .tab-content.active {
-    display: block; 
+    display: block; /* ✅ Upewnia się, że treść taba jest widoczna */
 }
 
 @keyframes fadeIn {
@@ -536,7 +536,7 @@ main { padding-top: 0; }
         font-size: 2rem; 
         color: var(--color-white); 
         cursor: pointer; 
-        z-index: 1020; /* ✅ Najwyższy priorytet dla przycisku */
+        z-index: 1020; /* Najwyższy priorytet dla przycisku */
     }
     
     /* Styl ikony (hamburger / X) */
@@ -552,16 +552,16 @@ main { padding-top: 0; }
         
         /* Menu na pełną wysokość i szerokość ekranu */
         position: fixed; 
-        top: 0;
+        top: 60px; /* ✅ FIX: Menu zaczyna się pod paskiem nav-bar, który ma min-height: 60px */
         right: 0;
         bottom: 0;
         width: 100%; 
         
         background-color: var(--color-black);
-        padding-top: 80px; 
+        padding-top: 20px; 
         text-align: center;
         box-shadow: none; 
-        z-index: 1015; /* ✅ Wysoki priorytet dla otwartego menu */
+        z-index: 1015; 
         overflow-y: auto; 
     }
 
