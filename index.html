@@ -3,64 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dziecięcy Klub Sportowy</title>
-    <link rel="stylesheet" href="style.css">
+    <title>UKS LEW OJRZANÓW | Treningi, Zapisy i Kontakt</title>
+    <meta name="description" content="Oficjalna strona UKS LEW OJRZANÓW. Dołącz do naszej drużyny! Treningi, kontakt i zapisy online.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="main-header">
-        <nav class="navbar">
-            <a href="index.html" class="logo">KIDS SPORT</a>
-            <ul>
-                <li><a href="#about">O nas</a></li>
-                <li><a href="trenerzy.html">Trenerzy</a></li>
-                <li><a href="#gallery">Galeria</a></li>
-                <li><a href="kontakt.html">Kontakt</a></li>
+    <header class="nav-bar">
+        <a href="#hero" class="logo-container" aria-label="Strona główna UKS LEW OJRZANÓW">
+            <img src="img/uks_lew_ojrzanow_logo.png" alt="Logo UKS Lew Ojrzanów - wizerunek lwa">
+            UKS LEW OJRZANÓW
+        </a>
+
+        <nav class="main-nav" aria-label="Główna nawigacja strony">
+            <button class="menu-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Otwórz menu">
+                ☰
+            </button>
+            <ul class="nav-list" id="nav-list">
+                <li><a href="#training">TRENINGI</a></li>
+                <li><a href="#contact">KONTAKT</a></li>
+                <li><a href="#" class="cta-button">ZAPISZ SIĘ</a></li>
             </ul>
         </nav>
-        <div class="hero">
-            <h1 class="hero-title">Rozwiń skrzydła w sporcie!</h1>
-            <p class="hero-subtitle">Pasja, zabawa i zdrowa rywalizacja dla Twojego dziecka.</p>
-            <a href="#contact" class="cta-button">Dołącz do nas!</a>
-        </div>
     </header>
 
-    <div class="parallax" style="background-image: url('img/parallax-1.jpg');"></div>
+    <main>
+        <header id="hero" class="hero-header">
+            <div class="hero-copy">
+                <h1>Rozwijaj Pasję z UKS LEW OJRZANÓW</h1>
+                <p>Osiągaj mistrzostwo w sporcie. Dołącz do naszej społeczności i zacznij swoją przygodę już dziś!</p>
+                <a href="#" class="cta-button cta-hero">ZAPISZ SIĘ TERAZ</a>
+            </div>
+            <div class="hero-image-placeholder">
+                [Placeholder na grafikę]
+            </div>
+        </header>
 
-    <section id="about" class="content-section">
-        <h2>O naszym klubie</h2>
-        <p>Jesteśmy klubem, który promuje sport i aktywność fizyczną wśród dzieci w wieku od 5 do 12 lat. Nasza misja to nie tylko trening, ale także rozwój charakteru, pracy zespołowej i zdrowego stylu życia. </p>
-    </section>
+        <section id="training" class="content-section" aria-labelledby="training-title">
+            <h2 id="training-title">🔥 Aktualne Treningi</h2>
+            <p>Tutaj znajdzie się szczegółowy harmonogram treningów, informacje o grupach wiekowych i wymaganiach.</p>
+            <p>Nasze zajęcia prowadzone są przez doświadczoną kadrę, dbającą o rozwój techniczny, taktyczny i mentalny każdego zawodnika.</p>
+        </section>
 
-    <div class="parallax" style="background-image: url('img/parallax-2.jpg');"></div>
+        <section id="contact" class="content-section" aria-labelledby="contact-title">
+            <h2 id="contact-title">📞 Skontaktuj Się</h2>
+            <p>Masz pytania dotyczące zapisów lub składek? Skontaktuj się z nami bezpośrednio. Jesteśmy do Twojej dyspozycji.</p>
+            <p>Lokalizacja, telefon i formularz kontaktowy zostaną dodane w tym miejscu.</p>
+        </section>
+    </main>
 
-    <section id="trainers" class="content-section">
-        <h2>Nasi wybitni trenerzy</h2>
-        <p>Nasi trenerzy to doświadczeni profesjonaliści, którzy kochają pracę z dziećmi. Dowiedz się więcej o ich osiągnięciach i podejściu do sportu.</p>
-        <a href="trenerzy.html" class="cta-button secondary-button">Poznaj naszych trenerów</a>
-    </section>
-
-    <div class="parallax" style="background-image: url('img/parallax-3.jpg');"></div>
-    
-    <section id="gallery" class="content-section">
-        <h2>Galeria</h2>
-        <div class="gallery-grid">
-            <img src="img/gallery-1.jpg" alt="Dzieci na treningu piłki nożnej">
-            <img src="img/gallery-2.jpg" alt="Grupa młodych sportowców po zawodach">
-            <img src="img/gallery-3.jpg" alt="Trenerzy rozmawiający z dziećmi">
-            <img src="img/gallery-4.jpg" alt="Zawody sportowe dla dzieci">
-        </div>
-    </section>
-
-    <div class="parallax" style="background-image: url('img/parallax-4.jpg');"></div>
-
-    <footer>
-        <p>&copy; 2024 Dziecięcy Klub Sportowy. Wszelkie prawa zastrzeżone.</p>
+    <footer class="main-footer">
+        <p class="footer-logo">UKS LEW OJRZANÓW</p>
+        <p>&copy; 2025. Wszelkie prawa zastrzeżone.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navList = document.querySelector('.nav-list');
+
+        menuToggle.addEventListener('click', function() {
+            const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+            this.setAttribute('aria-expanded', !expanded);
+            navList.classList.toggle('open');
+        });
+
+        // Zamknięcie menu po kliknięciu w link (dla UX na mobile)
+        navList.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    navList.classList.remove('open');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
