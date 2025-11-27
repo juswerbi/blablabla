@@ -28,7 +28,7 @@ body {
 }
 
 /* ---------------------------------------------------- */
-/* II. Nawigacja (Sticky Header)                        */
+/* II. Nawigacja (Sticky Header) - ZMIANA: Z-INDEX       */
 /* ---------------------------------------------------- */
 
 .nav-bar {
@@ -39,7 +39,7 @@ body {
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1010; /* ✅ Zwiększony Z-index, aby był nad zaszarzeniem tła */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     min-height: 80px; 
 }
@@ -507,8 +507,8 @@ main { padding-top: 0; }
 
 /* EFEKT ZASZARZENIA, GDY MENU JEST OTWARTE */
 .page-wrapper.menu-open-overlay {
-    filter: brightness(0.5); /* Lekkie zaszarzenie */
-    pointer-events: none; /* Blokuje interakcję z tłem, aby menu było jedynym klikalnym elementem */
+    filter: brightness(0.5); 
+    pointer-events: none; 
 }
 
 
@@ -536,7 +536,7 @@ main { padding-top: 0; }
         font-size: 2rem; 
         color: var(--color-white); 
         cursor: pointer; 
-        z-index: 1010; 
+        z-index: 1020; /* ✅ Najwyższy priorytet dla przycisku */
     }
     
     /* Styl ikony (hamburger / X) */
@@ -550,7 +550,7 @@ main { padding-top: 0; }
         display: none; 
         flex-direction: column;
         
-        /* ZMIANA: Menu na pełną wysokość i szerokość ekranu */
+        /* Menu na pełną wysokość i szerokość ekranu */
         position: fixed; 
         top: 0;
         right: 0;
@@ -561,8 +561,8 @@ main { padding-top: 0; }
         padding-top: 80px; 
         text-align: center;
         box-shadow: none; 
-        z-index: 1000;
-        overflow-y: auto; /* Zezwolenie na scrollowanie menu, jeśli jest za długie */
+        z-index: 1015; /* ✅ Wysoki priorytet dla otwartego menu */
+        overflow-y: auto; 
     }
 
     .nav-list.open { 
@@ -644,7 +644,7 @@ main { padding-top: 0; }
         min-width: 100%;
     }
     
-    /* CHIPSY NA MOBILE: W JEDNYM WIERSZU (poprawka) */
+    /* CHIPSY NA MOBILE: W JEDNYM WIERSZU */
     .chip-group {
         flex-direction: row; 
         flex-wrap: wrap; 
