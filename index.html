@@ -26,7 +26,7 @@
             </button>
             <ul class="nav-list" id="nav-list">
                 <li><a href="#training">TRENINGI</a></li>
-                <li><a href="#contact">KONTAKT_7</a></li>
+                <li><a href="#contact">KONTAKT_8</a></li>
                 <li><a href="#" class="cta-button">ZAPISZ SIĘ</a></li>
             </ul>
         </nav>
@@ -50,8 +50,11 @@
             <div class="training-location-grid">
                 
                 <div class="location-copy">
-                    <h3>📍 Gdzie Trenujemy</h3>
-                    <p>Wszystkie treningi odbywają się w **Hali sportowej** przy Szkole Podstawowej w Ojrzanowie, **ul. Szkolna 1** (wejście od ul. Tarczyńskiej).</p>
+                    <h3>Gdzie Trenujemy</h3>
+                    
+                    <p>Wszystkie treningi odbywają się w **Hali sportowej** przy Szkole Podstawowej w Ojrzanowie,<br>
+                    📍 <strong>ul. Szkolna 1</strong> (wejście od ul. Tarczyńskiej).</p>
+                    
                     <p class="training-info-note">Lokalizacja jest wygodnie dostępna i zapewnia pełne zaplecze sportowe.</p>
                 </div>
                 
@@ -93,11 +96,12 @@
                     <div id="lwiatek-content" class="schedule-card tab-content active">
                         <p class="subtitle">Zajęcia ogólnosportowe z elementami piłki ręcznej</p>
                         
-                        <div class="class-group">
-                            <h5>KL. I-III</h5>
-                            <div class="schedule-days">
+                        <div class="schedule-grid-2-col">
+                            <div>
                                 <p><strong>Poniedziałek:</strong> 15:30 - 16:30</p>
                                 <p><strong>Środa*:</strong> 15:30 - 17:00</p>
+                            </div>
+                            <div>
                                 <p><strong>Czwartek*:</strong> 14:30 - 16:00</p>
                                 <p><strong>Piątek:</strong> 15:30 - 16:30</p>
                             </div>
@@ -109,24 +113,22 @@
                     <div id="lew-content" class="schedule-card tab-content">
                         <p class="subtitle">Treningi piłki ręcznej dla chłopców i dziewcząt</p>
                         
-                        <div class="class-group">
-                            <h5>KL. IV-V</h5>
-                            <div class="schedule-days">
+                        <div class="schedule-grid-2-col">
+                            
+                            <div class="class-column">
+                                <h5>KL. IV-V</h5>
                                 <p><strong>Poniedziałek:</strong> 16:45 - 18:15</p>
                                 <p><strong>Środa:</strong> 17:30 - 19:00</p>
                                 <p><strong>Czwartek:</strong> 16:30 - 18:00</p>
                             </div>
-                        </div>
-                        
-                        <div class="schedule-separator"></div>
-                        
-                        <div class="class-group">
-                            <h5>KL. VI</h5>
-                            <div class="schedule-days">
+                            
+                            <div class="class-column">
+                                <h5>KL. VI</h5>
                                 <p><strong>Wtorek:</strong> 16:45 - 17:15</p>
                                 <p><strong>Środa:</strong> 17:30 - 19:00</p>
                                 <p><strong>Czwartek:</strong> 16:30 - 18:00</p>
                             </div>
+
                         </div>
                     </div>
                     
@@ -144,7 +146,6 @@
                     <label for="group-selection">Wybierz grupy treningowe, do których chcesz zapisać dziecko/dzieci:</label>
                     
                     <div class="chip-group" id="group-selection">
-                        
                         <input type="checkbox" id="lwiatek" name="group[]" value="lwiatek">
                         <label for="lwiatek" class="chip-label">Kl. I-III</label>
 
@@ -153,7 +154,6 @@
 
                         <input type="checkbox" id="lew_vi" name="group[]" value="lew_vi">
                         <label for="lew_vi" class="chip-label">Kl. VI</label>
-                        
                     </div>
 
                     <label for="email">Twój adres e-mail (do kontaktu):</label>
@@ -184,7 +184,6 @@
             navList.classList.toggle('open');
         });
 
-        // Zamknięcie menu po kliknięciu w link (dla UX na mobile)
         navList.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
@@ -201,15 +200,9 @@
         tabButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const targetId = button.dataset.tabTarget;
-                
-                // 1. Ukryj wszystkie treści i usuń aktywne style z przycisków
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 tabContents.forEach(content => content.classList.remove('active'));
-
-                // 2. Aktywuj kliknięty przycisk
                 button.classList.add('active');
-
-                // 3. Pokaż docelową treść
                 document.querySelector(targetId).classList.add('active');
             });
         });
