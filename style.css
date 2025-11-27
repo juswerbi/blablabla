@@ -8,7 +8,7 @@
     --color-yellow: #FFFF00;    /* Akcent - CTA */
     --color-white: #ffffff;
     --color-text: #F0F0F0;      /* Biały/Jasny tekst na ciemnym tle */
-    --color-bg-light: #f5f5f5;  /* Lekko szare tło sekcji (kontrast z czarnym) */
+    --color-bg-light: #f5f5f5;  /* Lekko szare tło sekcji */
 
     /* Ustawienia Fontu */
     --font-main: 'Open Sans', sans-serif;
@@ -26,7 +26,7 @@ body {
     line-height: 1.6;
     background-color: var(--color-bg-light);
     color: var(--color-black);
-    scroll-behavior: smooth; /* Płynne przewijanie do kotwic */
+    scroll-behavior: smooth;
 }
 
 /* ---------------------------------------------------- */
@@ -39,10 +39,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky; /* Przyklejenie paska menu */
+    position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    min-height: 80px; /* Zwiększona minimalna wysokość paska */
 }
 
 /* Logo i Nazwa Klubu */
@@ -52,12 +53,13 @@ body {
     color: var(--color-white);
     text-decoration: none;
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.4rem; /* Nieco większy font nazwy */
 }
 
 .logo-container img {
-    height: 40px; /* Rozmiar loga */
-    margin-right: 10px;
+    height: 65px; /* ZMIANA: Powiększone logo */
+    width: auto;
+    margin-right: 15px;
     object-fit: contain;
 }
 
@@ -72,6 +74,7 @@ body {
     display: flex;
     gap: 1.5rem;
     margin-right: 1.5rem;
+    align-items: center; /* Wyrównanie elementów w pionie */
 }
 
 .nav-list a {
@@ -83,38 +86,45 @@ body {
     border-bottom: 2px solid transparent;
 }
 
-/* Animacja/Interakcja WCAG: Hover i Focus */
 .nav-list a:hover,
 .nav-list a:focus {
     color: var(--color-gold);
     border-bottom: 2px solid var(--color-gold);
-    outline: none; /* Własny styl focusa */
+    outline: none;
 }
 
-/* CTA Button (Zapisz się) */
+/* ---------------------------------------------------- */
+/* CTA Button (Zapisz się) - Ujednolicenie            */
+/* ---------------------------------------------------- */
 .cta-button {
     display: inline-block;
     background-color: var(--color-yellow);
-    color: var(--color-black);
-    padding: 0.5rem 1rem;
+    /* ZMIANA: Wymuszony czarny kolor tekstu dla kontrastu WCAG AAA */
+    color: var(--color-black) !important; 
+    padding: 0.7rem 1.5rem; /* Nieco większe przyciski */
     text-decoration: none;
     font-weight: 700;
     border-radius: 5px;
-    transition: background-color 0.3s, transform 0.3s;
+    text-transform: uppercase; /* Bardziej sportowy styl */
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    border: none; /* Reset borderu dla linków */
 }
 
-/* Animacja/Interakcja CTA: Hover i Focus */
+/* Animacja/Interakcja CTA */
 .cta-button:hover,
 .cta-button:focus {
     background-color: var(--color-gold);
     transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.4); /* Złota poświata */
     outline: none;
 }
 
-/* Specjalny styl dla CTA w Hero (większy) */
+/* Specjalny styl dla CTA w Hero (jeszcze większy) */
 .cta-hero {
-    padding: 1rem 2rem;
+    padding: 1rem 2.5rem;
     font-size: 1.1rem;
+    margin-top: 10px;
 }
 
 /* ---------------------------------------------------- */
@@ -145,6 +155,7 @@ main {
     font-size: 3rem;
     margin-bottom: 1rem;
     line-height: 1.1;
+    color: var(--color-white);
 }
 
 .hero-copy p {
@@ -157,7 +168,7 @@ main {
 .hero-image-placeholder {
     flex-grow: 1;
     background-color: var(--color-gold);
-    min-height: 300px;
+    min-height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -165,11 +176,13 @@ main {
     font-weight: 700;
     color: var(--color-black);
     border-radius: 8px;
+    /* Dodajemy cień, żeby placeholder wyglądał lepiej */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5); 
 }
 
 /* Ogólny styl sekcji */
 .content-section {
-    padding: 4rem 5%;
+    padding: 6rem 5%; /* Większy odstęp góra/dół */
     text-align: center;
 }
 
@@ -197,7 +210,7 @@ main {
 .main-footer {
     background-color: var(--color-black);
     color: var(--color-text);
-    padding: 2rem 5%;
+    padding: 3rem 5%;
     text-align: center;
     font-size: 0.9rem;
     border-top: 3px solid var(--color-gold);
@@ -208,6 +221,7 @@ main {
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: var(--color-gold);
+    text-transform: uppercase;
 }
 
 /* ---------------------------------------------------- */
@@ -228,6 +242,18 @@ main {
 }
 
 @media (max-width: 768px) {
+    .nav-bar {
+        padding: 0.5rem 5%;
+    }
+
+    .logo-container img {
+        height: 50px; /* Nieco mniejsze logo na mobile, żeby nie rozpychało */
+    }
+
+    .logo-container {
+        font-size: 1rem;
+    }
+
     .hero-header {
         flex-direction: column;
         text-align: center;
@@ -251,7 +277,7 @@ main {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 55px; /* Wysokość nav-bar */
+        top: 100%; /* Rozwija się dokładnie pod paskiem menu */
         left: 0;
         width: 100%;
         background-color: var(--color-black);
@@ -271,14 +297,16 @@ main {
 
     .nav-list li a {
         display: block;
-        padding: 10px 0;
+        padding: 15px 0; /* Większe pola kliknięcia na mobile */
         width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator */
     }
 
     .cta-button {
         display: block;
         width: 80%;
-        margin: 10px auto;
+        margin: 20px auto;
+        text-align: center;
     }
 
     .menu-toggle {
@@ -286,8 +314,8 @@ main {
         background: none;
         border: none;
         color: var(--color-gold);
-        font-size: 1.5rem;
+        font-size: 2rem;
         cursor: pointer;
-        padding: 10px;
+        padding: 5px;
     }
 }
