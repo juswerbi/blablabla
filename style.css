@@ -142,18 +142,32 @@ main { padding-top: 0; }
 .hero-copy h1 { color: var(--color-white); font-size: 3rem; margin-bottom: 1rem; line-height: 1.1; }
 .hero-copy p { font-size: 1.25rem; margin-bottom: 2rem; color: var(--color-gold); }
 
-.hero-image-placeholder {
+/* Nowy styl dla kontenera obrazu */
+.hero-image-container {
     flex-grow: 1;
-    background-color: var(--color-gold);
     min-height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-black);
     border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); 
+    overflow: hidden; /* Opcjonalnie, jeśli chcesz zaokrąglone rogi */
+}
+
+/* Styl dla samego obrazu */
+.hero-image-container .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Sprawia, że zdjęcie pokrywa cały kontener bez deformacji */
+    border-radius: 8px; /* Aby pasowało do stylu strony, jeśli kontener ma overflow: hidden */
+    display: block;
+}
+
+/* KOREKTA NA MOBILE: Dajmy mu więcej miejsca */
+@media (max-width: 768px) {
+    .hero-image-container {
+        min-height: 250px; /* Mniejsza wysokość na telefonach */
+        width: 100%;
+    }
 }
 
 /* Ogólny styl sekcji */
