@@ -26,7 +26,7 @@
             </button>
             <ul class="nav-list" id="nav-list">
                 <li><a href="#training">TRENINGI</a></li>
-                <li><a href="#contact">KONTAKT_9</a></li>
+                <li><a href="#contact">KONTAKT-9</a></li>
                 <li><a href="#" class="cta-button">ZAPISZ SIĘ</a></li>
             </ul>
         </nav>
@@ -171,6 +171,51 @@
                     </form>
                 </div>
             </section>
+            
+            <section id="partners" class="content-section" aria-labelledby="partners-title">
+                <h2 id="partners-title">NASI PARTNERZY</h2>
+                
+                <div class="slider-container">
+                    
+                    <div class="slider-wrapper">
+                        <div class="slides-list">
+                            
+                            <div class="partner-slide">
+                                <img src="Img/uks_lew_ojrzanow_logo.png" alt="Logo partnera: Szkoła Podstawowa w Ojrzanowie" class="partner-logo">
+                                <p class="partner-name">Szkoła Podstawowa w Ojrzanowie</p>
+                            </div>
+                            <div class="partner-slide">
+                                <img src="Img/uks_lew_ojrzanow_logo.png" alt="Logo partnera: Gmina Żabia Wola" class="partner-logo">
+                                <p class="partner-name">Gmina Żabia Wola</p>
+                            </div>
+                            <div class="partner-slide">
+                                <img src="Img/uks_lew_ojrzanow_logo.png" alt="Logo partnera: Gramy w Ręczną" class="partner-logo">
+                                <p class="partner-name">Gramy w Ręczną</p>
+                            </div>
+                            <div class="partner-slide">
+                                <img src="Img/uks_lew_ojrzanow_logo.png" alt="Logo partnera: ZPRP" class="partner-logo">
+                                <p class="partner-name">ZPRP</p>
+                            </div>
+                            <div class="partner-slide">
+                                <img src="Img/uks_lew_ojrzanow_logo.png" alt="Logo partnera: Ministerstwo Sportu i Turystyki" class="partner-logo">
+                                <p class="partner-name">Ministerstwo Sportu i Turystyki</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <button class="slider-btn prev-btn" aria-label="Poprzedni partner">
+                        &#10094;
+                    </button>
+                    <button class="slider-btn next-btn" aria-label="Następny partner">
+                        &#10095;
+                    </button>
+                    
+                    <div class="slider-dots">
+                        </div>
+
+                </div>
+            </section>
         </main>
 
         <footer class="main-footer">
@@ -231,6 +276,96 @@
                 document.querySelector(targetId).classList.add('active');
             });
         });
+        
+        // Logika Slidera Partnerów
+        const sliderWrapper = document.querySelector('.slider-wrapper');
+        const slidesList = document.querySelector('.slides-list');
+        const slides = document.querySelectorAll('.partner-slide');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const dotsContainer = document.querySelector('.slider-dots');
+        
+        let currentIndex = 0;
+        let visibleSlides = 3; // Domyślnie 3 widoczne slajdy na desktop
+        let slideWidth;
+        
+        // 1. Ustawienie Ilości Widocznych Slajdów w zależności od szerokości
+        function setVisibleSlides() {
+            if (window.innerWidth <= 768) {
+                visibleSlides = 1; // Na mobile 1 slajd
+            } else if (window.innerWidth <= 1024) {
+                visibleSlides = 2; // Na tablet 2 slajdy
+            } else {
+                visibleSlides = 3; // Na desktop 3 slajdy
+            }
+            // Zresetowanie indexu, aby uniknąć problemów po zmianie rozmiaru
+            currentIndex = 0;
+            updateSlider();
+            createDots(); // Musimy odtworzyć kropki, ponieważ ich liczba się zmienia
+        }
+
+        // 2. Tworzenie Kropek (Nawigacji)
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            // Ilość kropek = Ilość slajdów, które można przesunąć
+            const totalDots = slides.length - visibleSlides + 1;
+            for (let i = 0; i < totalDots; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateSlider();
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        // 3. Aktualizacja Slidera (Przesunięcie)
+        function updateSlider() {
+            // Obliczenie przesunięcia
+            // Używamy procentów, by zachować responsywność 
+            const offset = -currentIndex * (100 / slides.length) * (slides.length / visibleSlides);
+            slidesList.style.transform = `translateX(${offset}%)`;
+            
+            updateDotsHighlight();
+            updateButtons();
+        }
+
+        // 4. Aktualizacja Kropek
+        function updateDotsHighlight() {
+            const dots = dotsContainer.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+        
+        // 5. Aktualizacja Strzałek (Blokowanie na krańcach)
+        function updateButtons() {
+            const maxIndex = slides.length - visibleSlides;
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex >= maxIndex;
+        }
+
+        // 6. Obsługa przycisków
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const maxIndex = slides.length - visibleSlides;
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+                updateSlider();
+            }
+        });
+        
+        // Inicjalizacja
+        window.addEventListener('load', setVisibleSlides);
+        window.addEventListener('resize', setVisibleSlides);
     </script>
 </body>
 </html>
